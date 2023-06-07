@@ -11,10 +11,10 @@ const kue = useCookie("kue", {
 const nasi = useCookie("nasi");
 const test = () => {
   // try {
-  throwing();
+  // throwing();
   // kue.value = "lemper";
   // nasi.value = "goreng";
-  // $fetch("/api/kue", { method: "post" });
+  $fetch("/api/kue", { method: "post" });
   // } catch (error) {
   //   console.log(error);
   // }
@@ -27,9 +27,11 @@ onMounted(() => {
   console.log(kue.value);
 });
 const callFetch = async () => {
-  await useFetch("/api/kue", {
+  const { data } = await useFetch("/api/kue", {
     method: "get",
   });
+
+  alert(data.value);
 };
 const deleteC = async () => {
   await useFetch("/api/kue", {
@@ -43,7 +45,7 @@ const deleteC = async () => {
     <button class="pointer bg-blue-500 rounded py-2 px-4" @click="test">
       click
     </button>
-    <!-- <button
+    <button
       class="pointer bg-blue-500 rounded py-2 px-4 mx-2"
       @click="callFetch"
     >
@@ -51,6 +53,6 @@ const deleteC = async () => {
     </button>
     <button class="pointer bg-blue-500 rounded py-2 px-4 mx-2" @click="deleteC">
       fetch
-    </button> -->
+    </button>
   </div>
 </template>

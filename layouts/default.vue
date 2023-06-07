@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div class="min-h-screen">
     <NuxtErrorBoundary>
       <template #error="{ error }">
         <p>An error occured from template:{{ error }}</p>
       </template>
-      <div>
-        <span>ini layout</span>
+      <div class="container">
         <!-- <NuxtPage></NuxtPage> -->
         <slot></slot>
       </div>

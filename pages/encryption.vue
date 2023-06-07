@@ -1,6 +1,16 @@
 <script setup lang="ts">
 const hashSource = "testing string for hash";
 const hashResult = ref("");
+const handleHMAC = async () => {
+  const { data } = await useFetch("/api/encryption/hash", {
+    method: "POST",
+    body: hashSource,
+  });
+
+  if (data.value) {
+    hashResult.value = data.value;
+  }
+};
 
 const encryptSource = "testing string for encryption";
 const encryptResult = ref("");
@@ -19,7 +29,7 @@ const decryptResult = ref("");
           <span>Result : </span>
           <span>{{ hashResult }}</span>
         </div>
-        <c-button class="flex mx-auto mt-2">Hash</c-button>
+        <c-button class="flex mx-auto mt-2" @click="handleHMAC">Hash</c-button>
       </div>
       <div class="border border-gray-400 p-4 rounded-xl mt-5">
         <div>

@@ -4,7 +4,7 @@
       <template #error="{ error }">
         <p>An error occured from template:{{ error }}</p>
       </template>
-      <div class="container">
+      <div class="container mx-auto">
         <!-- <NuxtPage></NuxtPage> -->
         <slot></slot>
       </div>

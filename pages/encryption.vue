@@ -3,7 +3,7 @@ const hashSource = "testing string for hash";
 const hashResult = ref("");
 const handleHMAC = async () => {
   const { data } = await useFetch("/api/encryption/hash", {
-    method: "POST",
+    method: "post",
     body: hashSource,
   });
 
@@ -15,6 +15,29 @@ const handleHMAC = async () => {
 const encryptSource = "testing string for encryption";
 const encryptResult = ref("");
 const decryptResult = ref("");
+const handleEncrypt = async () => {
+  const { data } = await useFetch("/api/encryption/encrypt", {
+    method: "post",
+    body: encryptSource,
+  });
+  if (data.value) {
+    encryptResult.value = data.value;
+    decryptResult.value = "";
+  }
+};
+const handleDecrypt = async () => {
+  if (encryptResult.value) {
+    const { data } = await useFetch("/api/encryption/decrypt", {
+      method: "post",
+      body: encryptResult.value,
+    });
+    if (data.value) {
+      decryptResult.value = data.value;
+    }
+  } else {
+    alert("Nothing to decrypt");
+  }
+};
 </script>
 
 <template>
@@ -45,8 +68,8 @@ const decryptResult = ref("");
           <span>{{ decryptResult }}</span>
         </div>
         <div class="flex justify-center mt-2 gap-2">
-          <c-button class="">Encrypt</c-button>
-          <c-button class="">Decrypt</c-button>
+          <c-button @click="handleEncrypt">Encrypt</c-button>
+          <c-button @click="handleDecrypt">Decrypt</c-button>
         </div>
       </div>
     </div>

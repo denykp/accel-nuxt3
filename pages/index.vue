@@ -8,6 +8,10 @@ const listExample = ref([
     label: "Encryption",
     path: "/encryption",
   },
+  {
+    label: "Firebase-RDB",
+    path: "/firebase-rdb",
+  },
 ]);
 </script>
 

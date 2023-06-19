@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return super heroes that can fly 1`] = `
+[
+  {
+    "name": "Jack",
+    "powers": [
+      "shapeshifting",
+      "fly",
+    ],
+  },
+]
+`;
